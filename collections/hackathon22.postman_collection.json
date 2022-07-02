@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "542c3728-2c6d-4dda-8b4e-009395f00f17",
+		"name": "hackathon22",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\": 31,\r\n    \"oxyLvl\": 71.2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:6999/hackathon22/v1/save",
+					"host": [
+						"localhost"
+					],
+					"port": "6999",
+					"path": [
+						"hackathon22",
+						"v1",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:6999/hackathon22/v1/findAll",
+					"host": [
+						"localhost"
+					],
+					"port": "6999",
+					"path": [
+						"hackathon22",
+						"v1",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,2 @@
+docker-compose rm
+docker rmi -f hackathon22-spring-boot-application

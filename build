@@ -1,0 +1,2 @@
+cd spring-boot-application && mvn clean install
+docker-compose build --no-cache --force-rm
