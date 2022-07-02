@@ -1,5 +1,13 @@
 # Hackathon 22
 ## Spring Boot Application
+
+#### Pre-requisites
+
+- Start docker
+- Update the following properties:
+    - `MYSQL_ROOT_PASSWORD` in `docker-compose.yaml`
+    - `spring.datasource.password` in `spring-boot-application/src/main/resources/application.yaml`
+
 #### Build
 ```sh
 ./build
@@ -27,7 +35,9 @@ docker-compose stop
 - [docker-compose] - build, run, etc
 
 > Note: 1. Use **linux-based** terminal for all commands and run from root directory
+
 > Note: 2. Stop existing running instance for MySQL
+
 > Note: 3. Make sure to run **cleanup** script before redeploying
 
 **Code Black**
