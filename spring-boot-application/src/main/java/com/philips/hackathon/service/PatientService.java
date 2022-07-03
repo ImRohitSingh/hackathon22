@@ -25,6 +25,11 @@ public class PatientService {
 		log.info("Patient data saved to database...");
 	}
 
+	public void savePatient(Patient patient) {
+		patientRepository.save(patient);
+		log.info("Patient data saved to database...");
+	}
+
 	public List<Patient> findAllPatients() {
 		log.info("Returning all patients found in database...");
 		return patientRepository.findAll();

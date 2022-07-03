@@ -1,7 +1,16 @@
 version: "3"
 services:
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: hackathon22-rabbitmq
+    volumes:
+    - /var/lib/rabbitmq/
+    - /var/log/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
   mysqldb:
-    image: mysql:latest
+    image: "mysql:latest"
     container_name: hackathon22-mysqldb
     environment:
       - MYSQL_ROOT_PASSWORD=<db_password>
@@ -20,5 +29,6 @@ services:
       - 6999:6999
     depends_on:
       - mysqldb
+      - rabbitmq
 volumes:
   db:

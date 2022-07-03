@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://host.docker.internal:3306/hackathon22
     username: root
-    password: <password>  
+    password: <password>
   jpa:
     properties:
       hibernate:
@@ -17,3 +17,26 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  rabbitmq:
+    host: host.docker.internal
+  cloud:
+    function:
+      definition: patientProducer;patientConsumer
+    stream:
+      function:
+        bindings:
+          patientProducer-out-0: source
+          patientConsumer-in-0: sink
+      poller:
+        fixed-delay: 1200
+        time-unit: seconds
+      bindings:
+        source:
+          destination: patient-queue
+          group: patients
+        sink:
+          destination: patient-queue
+          group: patients
+          consumer:
+            concurrency: 2
+            max-attempts: 3
