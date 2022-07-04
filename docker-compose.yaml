@@ -19,6 +19,26 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
+  grafana:
+    image: grafana/grafana
+    container_name: hackathon22-grafana
+    ports:
+      - 3000:3000
+    networks:
+      - grafana-net
+    volumes:
+      - grafana-volume
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: hackathon22-graphite
+    ports:
+      - 80:80
+      - 2003-2004:2003-2004
+      - 2023-2024:2023-2024
+      - 8125:8125/udp
+      - 8126:8126
+    networks:
+      - grafana-net
   hackathon-spring-app:
     image: "hackathon22-spring-boot-application"
     container_name: hackathon22-spring-boot-application
@@ -30,5 +50,13 @@ services:
     depends_on:
       - mysqldb
       - rabbitmq
+      - graphite
+      - grafana
+
+networks:
+  grafana-net:
+
 volumes:
   db:
+  grafana-volume:
+    external: true

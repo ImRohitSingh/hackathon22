@@ -18,12 +18,21 @@ public class StreamSink {
 	@Autowired
 	private PatientService patientService;
 
+	private int count = 0;
+
 	@Bean
 	public Consumer<Patient> patientConsumer() {
 		return payload -> {
+			++count;
 			log.info("Sink (consumed): {}", payload);
-			log.info("Saving consumed item to database...");
-			patientService.savePatient(payload);
+			if (count % 15 == 0) {
+				log.info("Saving consumed item to database...");
+				patientService.savePatient(payload);
+			}
+
+			if (count == Integer.MAX_VALUE) {
+				count = 0;
+			}
 		};
 	}
 

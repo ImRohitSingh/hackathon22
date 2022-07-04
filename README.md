@@ -4,10 +4,14 @@
 #### Pre-requisites
 
 - Maven
-- Start docker
+- Docker
 - Update the following properties:
     - `MYSQL_ROOT_PASSWORD` in `docker-compose.yaml`
     - `spring.datasource.password` in `spring-boot-application/src/main/resources/application.yaml`
+- Run the following command (only once) from root directory:
+```sh
+docker volume create --name=grafana-volume
+```
 
 #### Build
 ```sh
@@ -33,9 +37,11 @@ docker-compose stop
 
 ## Tech-Stack
 
-- [Spring Boot] - Monitoring Application
+- [SpringBoot] - Monitoring Application
 - [MySQL] - RDBMS
 - [RabbitMQ] - message broker
+- [GraphiteDB] - time series database
+- [Grafana] - monitoring visualization tool
 - [Docker] - build
 - [docker-compose] - build, run, etc
 

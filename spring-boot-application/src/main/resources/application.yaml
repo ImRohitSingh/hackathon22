@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://host.docker.internal:3306/hackathon22
     username: root
-    password: <password>
+    password: <db_password>
   jpa:
     properties:
       hibernate:
@@ -28,8 +28,8 @@ spring:
           patientProducer-out-0: source
           patientConsumer-in-0: sink
       poller:
-        fixed-delay: 1200
-        time-unit: seconds
+        fixed-delay: 50000
+        time-unit: MILLISECONDS
       bindings:
         source:
           destination: patient-queue
@@ -37,6 +37,11 @@ spring:
         sink:
           destination: patient-queue
           group: patients
-          consumer:
-            concurrency: 2
-            max-attempts: 3
+
+management:
+  metrics:
+    export:
+      graphite:
+        host: host.docker.internal
+        step: 1s
+        tags-as-prefix: application
