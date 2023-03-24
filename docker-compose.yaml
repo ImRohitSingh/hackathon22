@@ -13,7 +13,7 @@ services:
     image: "mysql:latest"
     container_name: hackathon22-mysqldb
     environment:
-      - MYSQL_ROOT_PASSWORD=<db_password>
+      - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=hackathon22
     ports:
       - 3306:3306

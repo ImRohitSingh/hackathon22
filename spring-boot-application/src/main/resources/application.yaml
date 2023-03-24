@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://host.docker.internal:3306/hackathon22
     username: root
-    password: <db_password>
+    password: admin
   jpa:
     properties:
       hibernate:

@@ -24,7 +24,6 @@ public class PatientController {
 	@PostMapping(path = "/save")
 	@ResponseStatus(code = HttpStatus.CREATED, reason = "Patient data saved")
 	public void savePatient(@RequestBody Request request) {
-		// TODO: validation for age and oxyLvl and return failure codes accordingly
 		patientService.savePatient(request);
 	}
 
